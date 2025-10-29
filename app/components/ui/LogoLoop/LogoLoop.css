@@ -1,0 +1,187 @@
+.logoloop {
+  position: relative;
+  overflow-x: hidden;
+
+  --logoloop-gap: 32px;
+  --logoloop-logoHeight: 28px;
+  --logoloop-fadeColorAuto: #ffffff;
+}
+
+.logoloop--scale-hover {
+  padding-top: calc(var(--logoloop-logoHeight) * 0.1);
+  padding-bottom: calc(var(--logoloop-logoHeight) * 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .logoloop {
+    --logoloop-fadeColorAuto: #121212; /* Match your dark background */
+  }
+}
+
+.logoloop__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  user-select: none;
+}
+
+.logoloop__list {
+  display: flex;
+  align-items: center;
+}
+
+.logoloop__item {
+  flex: 0 0 auto;
+  margin-right: var(--logoloop-gap);
+  font-size: var(--logoloop-logoHeight);
+  line-height: 1;
+}
+
+.logoloop__item:last-child {
+  margin-right: var(--logoloop-gap);
+}
+
+.logoloop__node {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff !important; /* Force white color for icons */
+}
+
+.logoloop__node svg {
+  color: #ffffff !important; /* Ensure SVG icons are white */
+  fill: #ffffff !important;
+}
+
+.logoloop__item img {
+  height: var(--logoloop-logoHeight);
+  width: auto;
+  display: block;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  /* Links handle interaction */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0) invert(1); /* Convert any colored images to white */
+}
+
+.logoloop--scale-hover .logoloop__item {
+  overflow: visible;
+}
+
+.logoloop--scale-hover .logoloop__item:hover img,
+.logoloop--scale-hover .logoloop__item:hover .logoloop__node {
+  transform: scale(1.2);
+  transform-origin: center center;
+}
+
+.logoloop--scale-hover .logoloop__node {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoloop__link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.logoloop__link:hover {
+  opacity: 0.8;
+}
+
+.logoloop__link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Enhanced fadeout with moderate larger margins */
+.logoloop--fade::before,
+.logoloop--fade::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* Moderate increase - sweet spot between original and too much */
+  width: clamp(100px, 25%, 350px); /* Balanced fadeout area */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.logoloop--fade::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 25%, /* Moderate solid area */
+    rgba(18, 18, 18, 0.8) 50%, /* Smooth transition */
+    rgba(18, 18, 18, 0.4) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.logoloop--fade::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 25%, /* Moderate solid area */
+    rgba(18, 18, 18, 0.8) 50%, /* Smooth transition */
+    rgba(18, 18, 18, 0.4) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Alternative: Extra dramatic fadeout for maximum effect */
+.logoloop--fade-large::before,
+.logoloop--fade-large::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(200px, 40%, 600px); /* Extremely large fadeout area */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.logoloop--fade-large::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 40%, /* Very long solid area */
+    rgba(18, 18, 18, 0.98) 50%,
+    rgba(18, 18, 18, 0.9) 65%,
+    rgba(18, 18, 18, 0.7) 75%,
+    rgba(18, 18, 18, 0.5) 85%,
+    rgba(18, 18, 18, 0.2) 95%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.logoloop--fade-large::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 40%, /* Very long solid area */
+    rgba(18, 18, 18, 0.98) 50%,
+    rgba(18, 18, 18, 0.9) 65%,
+    rgba(18, 18, 18, 0.7) 75%,
+    rgba(18, 18, 18, 0.5) 85%,
+    rgba(18, 18, 18, 0.2) 95%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoloop__track {
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  .logoloop__item img,
+  .logoloop__node {
+    transition: none !important;
+  }
+}

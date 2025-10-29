@@ -1,0 +1,15 @@
+.scroll-reveal {
+  margin: 20px 0;
+  max-width: 500px; /* matches Typography */
+}
+
+.scroll-reveal-text {
+  font-size: clamp(1.25rem, 2vw, 1.5rem); /* xs=1.25rem, md=1.5rem */
+  line-height: 1.6;                       /* same as Typography */
+  font-weight: 400;                       /* same as Typography */
+  color: var(--mui-text-secondary);       /* use secondary text color */
+}
+
+.word {
+  display: inline-block;
+}

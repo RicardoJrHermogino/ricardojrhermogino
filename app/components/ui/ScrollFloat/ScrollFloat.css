@@ -1,0 +1,18 @@
+.scroll-float {
+  overflow: hidden;
+}
+
+.scroll-float-text {
+  display: inline-block;
+  font-size: clamp(2rem, 4vw, 2.5rem); /* matches xs=2rem, sm=2.5rem */
+  font-weight: 600; /* same as Typography */
+  color: var(--mui-palette-text-primary); /* inherit from theme if possible */
+  text-align: center;
+  line-height: 1.2; /* closer to MUI heading spacing */
+  margin-bottom: 8px;
+}
+
+
+.char {
+  display: inline-block;
+}
