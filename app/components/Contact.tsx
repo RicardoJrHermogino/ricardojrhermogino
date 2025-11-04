@@ -1,3 +1,6 @@
+import { useState } from "react";
+import emailjs from "emailjs-com";
+import { Toaster, toast } from 'sonner';
 import {
   Mail,
   Phone,
@@ -10,12 +13,42 @@ import {
 import { contactInfo, socialLinks } from "../data/contact";
 
 export function Contact() {
+  const [isSending, setIsSending] = useState(false);
+
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    const toastId = toast.loading("Sending message...");
+
+    try {
+      await emailjs.sendForm(
+        "service_1y8yjc3", // replace with your EmailJS Service ID
+        "template_cswgyu7", // replace with your EmailJS Template ID
+        e.target as HTMLFormElement,
+        "JxrycaRVsQJppWwGh" // replace with your EmailJS Public Key
+      );
+
+      toast.success("Message sent successfully! ✅", { id: toastId });
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      toast.error("Failed to send message. Please try again later.", {
+        id: toastId,
+      });
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
-    <section id="contact" className="py-24 bg-neutral-950  text-gray-100">
+    <section id="contact" className="py-24 bg-neutral-950 text-gray-100">
+      <Toaster position="bottom-center" theme="dark" richColors />
+
+
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-semibold text-white mb-3">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-3">
             Get In Touch
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
@@ -32,7 +65,7 @@ export function Contact() {
               Send me a message
             </h3>
 
-            <form className="flex flex-col gap-4">
+            <form onSubmit={sendEmail} className="flex flex-col gap-4">
               {/* Name + Email */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <input
@@ -72,10 +105,43 @@ export function Contact() {
               {/* Button */}
               <button
                 type="submit"
-                className="flex items-center justify-center gap-2 bg-white text-black text-lg py-3 rounded-md hover:bg-gray-200 transition-colors"
+                disabled={isSending}
+                className={`flex items-center justify-center gap-2 bg-white text-black text-lg py-3 rounded-md transition-colors ${
+                  isSending
+                    ? "opacity-70 cursor-not-allowed"
+                    : "hover:bg-gray-200"
+                }`}
               >
-                <Send className="w-5 h-5" />
-                Send Message
+                {isSending ? (
+                  <>
+                    <svg
+                      className="animate-spin w-5 h-5 text-black"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                      ></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>

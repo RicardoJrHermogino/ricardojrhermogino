@@ -7,7 +7,7 @@ export function Certificates() {
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-semibold text-white mb-3">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-3">
             Certificates & Achievements
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
@@ -24,7 +24,8 @@ export function Certificates() {
               key={index}
               className="flex flex-col flex-1 basis-full md:basis-[48%] lg:basis-[31%]"
             >
-              <div className="flex flex-col bg-neutral-900 border border-neutral-800 rounded-2xl shadow-md hover:shadow-lg hover:shadow-white/5 transition-all duration-300 transform hover:-translate-y-1 p-6 h-full">
+              <div className="flex flex-col bg-neutral-800 border border-gray-700 rounded-2xl shadow-lg hover:shadow-xl hover:shadow-white/5 transition-all duration-300 transform hover:-translate-y-1 p-6 h-full">
+
                 {/* Header Row */}
                 <div className="flex justify-between items-start mb-3">
                   <Award className="w-8 h-8 text-gray-200" />

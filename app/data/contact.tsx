@@ -1,17 +1,17 @@
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Instagram } from "lucide-react";
 
 export const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "ricardohermoginojr.com",
+    value: "ricardohermoginojr@gmail.com",
     href: "https://mail.google.com/mail/?view=cm&fs=1&to=ricardohermoginojr@gmail.com"
   },
   {
     icon: Phone,
     label: "Phone",
     value: "+63-950-647-1431",
-    href: "tel:+15551234567"
+    href: "tel:+639506471431"
   },
   {
     icon: MapPin,
@@ -33,8 +33,8 @@ export const socialLinks = [
     href: "https://www.linkedin.com/in/workw8ricardojrhermogino/"
   },
   {
-    icon: Twitter,
-    label: "Twitter",
-    href: "https://twitter.com"
+    icon: Instagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/lil_cacss/"
   }
 ];

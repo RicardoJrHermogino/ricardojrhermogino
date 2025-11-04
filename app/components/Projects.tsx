@@ -5,7 +5,7 @@ import { ExternalLink, Github } from "lucide-react";
 export function Projects() {
   return (
     <section id="projects" className="py-20 bg-neutral-900 text-gray-100">
-      <div className="container mx-auto px-6 xl:px-10">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-white">
@@ -21,9 +21,9 @@ export function Projects() {
         <div className="grid gap-8 md:grid-cols-2">
           {projectsData.map((project, index) => (
             <div
-              key={index}
-              className="flex flex-col bg-neutral-900 rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/5"
-            >
+            key={index}
+            className="flex flex-col bg-neutral-800 rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/5"
+            >          
               {/* Project Image */}
               <div className="relative h-60 overflow-hidden">
                 <Image

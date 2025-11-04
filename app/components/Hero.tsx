@@ -66,40 +66,61 @@ export function Hero() {
               <h1 className="text-gray-400 font-bold tracking-wide opacity-80 text-[2.1rem] sm:text-[2.2rem] md:text-[2.3rem]">
                 Hello, I&apos;m
               </h1>
-
               <BlurText
                 text="Ricardo Jr. E. Hermogino"
                 animateBy="letters"
                 direction="top"
                 delay={100}
                 stepDuration={0.3}
-                className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white"
+                className="
+                  font-extrabold 
+                  text-white 
+                  leading-tight 
+                  text-3xl 
+                  sm:text-4xl 
+                  md:text-5xl 
+                  lg:text-6xl 
+                  xl:text-7xl
+                "
               />
-
               <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed text-base sm:text-lg md:text-xl font-normal">
                 Welcome to my portfolio! Discover my projects and the ideas I bring to life
                 through code and design.
               </p>
             </div>
 
+
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-              <button
-                onClick={() => scrollTo("#projects")}
-                className="bg-primary text-white font-medium px-6 py-3 rounded-md text-lg hover:bg-primary/80 transition w-[200px] sm:w-auto"
-              >
-                View My Work
-              </button>
+            <button
+              onClick={() => scrollTo("#projects")}
+              className="
+                bg-[#FFFFFF] 
+                text-black 
+                font-medium 
+                px-6 
+                py-3 
+                rounded-md 
+                text-lg 
+                hover:bg-[#9b9b9b] 
+                transition 
+                w-[200px] 
+                sm:w-auto
+              "
+            >
+              View My Work
+            </button>
+
               <button
                 onClick={() => scrollTo("#contact")}
-                className="border border-gray-500 text-gray-200 font-medium px-6 py-3 rounded-md text-lg hover:bg-white/10 transition w-[200px] sm:w-auto"
+                className="border border-white-500 text-gray-200 font-medium px-6 py-3 rounded-md text-lg hover:bg-white/10 transition w-[200px] sm:w-auto"
               >
                 Get In Touch
               </button>
             </div>
 
             {/* Social Icons */}
-            <div className="flex space-x-5 justify-center">
+            <div className="flex space-x-7 justify-center">
               <a
                 href="https://github.com/RicardoJrHermogino"
                 target="_blank"

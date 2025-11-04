@@ -9,38 +9,41 @@ export function Experience() {
   const lineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let frameId: number;
+  
     const updateScroll = () => {
       const line = lineRef.current;
       if (!line) return;
-
+  
       const rect = line.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       const centerY = windowHeight / 2;
-
+  
       // Calculate scroll progress
       const totalHeight = rect.height;
       const scrolled = centerY - rect.top;
       const progress = Math.min(Math.max(scrolled / totalHeight, 0), 1);
       setScrollPercent(progress);
-
+  
       // Get horizontal center of line (for responsiveness)
       const lineX = rect.left + rect.width / 2;
       setLineLeft(lineX);
-
+  
       // ✅ Only show glowing dot when the line actually crosses the center
       const isCenterInsideLine = rect.top <= centerY && rect.bottom >= centerY;
       setShowDot(isCenterInsideLine);
-
-      requestAnimationFrame(updateScroll);
+  
+      frameId = requestAnimationFrame(updateScroll);
     };
-
-    requestAnimationFrame(updateScroll);
-    return () => cancelAnimationFrame(updateScroll as any);
+  
+    frameId = requestAnimationFrame(updateScroll);
+  
+    return () => cancelAnimationFrame(frameId);
   }, []);
+  
 
   return (
     <section
-      id="experience"
       className="relative py-24 bg-neutral-950 text-gray-100 overflow-hidden"
     >
       <div className="max-w-3xl mx-auto px-6">
