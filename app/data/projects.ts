@@ -2,7 +2,7 @@ export const projectsData = [
   {
     "title": "Personal Portfolio Website",
     "description": "A responsive developer portfolio built with Next.js and Tailwind CSS. Features smooth animations, 3D-enhanced visuals, and a chatbot powered by the Gemini API for interactive user engagement. Deployed on Vercel.",
-    "image": "/portfolio-preview.png",
+    "image": "/portfolio.jpg",
     "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     "liveUrl": "https://ricardojrhermogino.vercel.app/",
     "githubUrl": "https://github.com/RicardoJrHermogino/portfolio"
